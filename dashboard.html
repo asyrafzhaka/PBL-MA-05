@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Stok Rumah Tangga</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="app-page">
+  <header class="topbar">
+    <a class="brand" href="#beranda"><span class="brand-mark">⌂</span> Stok Rumah Tangga</a>
+    <div class="user-menu"><span class="user-avatar">P</span> Hai, Pengguna! <span aria-hidden="true">⌄</span></div>
+  </header>
+
+  <aside class="sidebar">
+    <nav>
+      <a class="nav-link active" href="#beranda"><span>⌂</span> Beranda</a>
+      <a class="nav-link" href="#kategori"><span>▦</span> Kategori</a>
+      <a class="nav-link" href="#barang"><span>⬡</span> Barang</a>
+      <a class="nav-link" href="#stok"><span>▤</span> Stok</a>
+      <a class="nav-link" href="#belanja"><span>☷</span> Daftar Belanja</a>
+      <a class="nav-link" href="#laporan"><span>▧</span> Laporan</a>
+    </nav>
+    <a class="nav-link logout" href="index.html"><span>⇥</span> Logout</a>
+  </aside>
+
+  <main class="main-content">
+    <section id="beranda" class="welcome-card">
+      <div>
+        <p class="eyebrow">DASHBOARD</p>
+        <h1>Hai, Pengguna!</h1>
+        <p class="muted">Pantau stok dan catat kebutuhan rumah tangga dalam satu tempat.</p>
+      </div>
+      <div class="welcome-symbol">⌂</div>
+    </section>
+
+    <section class="stats-grid" aria-label="Ringkasan data">
+      <article class="stat-card"><span class="stat-icon">⬡</span><div><p>Total Barang</p><strong>24</strong></div></article>
+      <article class="stat-card"><span class="stat-icon">▦</span><div><p>Kategori</p><strong>5</strong></div></article>
+      <article class="stat-card"><span class="stat-icon">▤</span><div><p>Total Stok</p><strong>178</strong></div></article>
+      <article class="stat-card"><span class="stat-icon">⚠</span><div><p>Stok Menipis</p><strong>3</strong></div></article>
+    </section>
+
+    <section id="kategori" class="content-card">
+      <div class="section-heading">
+        <div><h2>▦ Kategori</h2><p class="muted">Kelompokkan barang sesuai jenis kebutuhan.</p></div>
+        <button class="btn btn-dark" type="button">＋ Tambah Kategori</button>
+      </div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>No</th><th>Nama Kategori</th><th>Deskripsi</th><th>Jumlah Barang</th><th>Aksi</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Makanan &amp; Minuman</td><td>Kebutuhan konsumsi sehari-hari</td><td>12</td><td><button class="btn btn-small">Edit</button> <button class="btn btn-small btn-outline">Hapus</button></td></tr>
+          <tr><td>2</td><td>Kebersihan</td><td>Peralatan dan bahan kebersihan</td><td>8</td><td><button class="btn btn-small">Edit</button> <button class="btn btn-small btn-outline">Hapus</button></td></tr>
+          <tr><td>3</td><td>Perawatan Diri</td><td>Perlengkapan perawatan tubuh</td><td>6</td><td><button class="btn btn-small">Edit</button> <button class="btn btn-small btn-outline">Hapus</button></td></tr>
+          <tr><td>4</td><td>Dapur</td><td>Peralatan memasak</td><td>10</td><td><button class="btn btn-small">Edit</button> <button class="btn btn-small btn-outline">Hapus</button></td></tr>
+          <tr><td>5</td><td>Kesehatan</td><td>Perlengkapan kesehatan</td><td>5</td><td><button class="btn btn-small">Edit</button> <button class="btn btn-small btn-outline">Hapus</button></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="barang" class="content-card">
+      <div class="section-heading">
+        <div><h2>⬡ Data Barang</h2><p class="muted">Daftar kebutuhan rumah tangga yang tersimpan.</p></div>
+        <button class="btn btn-dark" type="button">＋ Tambah Barang</button>
+      </div>
+      <div class="toolbar"><input type="search" placeholder="Cari nama barang..."><select aria-label="Filter kategori"><option>Semua Kategori</option><option>Makanan &amp; Minuman</option><option>Kebersihan</option><option>Perawatan Diri</option></select></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>No</th><th>Nama Barang</th><th>Kategori</th><th>Satuan</th><th>Harga (Rp)</th><th>Stok</th><th>Status</th><th>Aksi</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Beras</td><td>Makanan &amp; Minuman</td><td>Kg</td><td>15.000</td><td>10</td><td><span class="status status-safe">Aman</span></td><td><button class="btn btn-small">Edit</button> <button class="btn btn-small btn-outline">Hapus</button></td></tr>
+          <tr><td>2</td><td>Minyak Goreng</td><td>Makanan &amp; Minuman</td><td>Liter</td><td>18.000</td><td>5</td><td><span class="status status-low">Menipis</span></td><td><button class="btn btn-small">Edit</button> <button class="btn btn-small btn-outline">Hapus</button></td></tr>
+          <tr><td>3</td><td>Sabun Cuci Piring</td><td>Kebersihan</td><td>Botol</td><td>12.000</td><td>8</td><td><span class="status status-safe">Aman</span></td><td><button class="btn btn-small">Edit</button> <button class="btn btn-small btn-outline">Hapus</button></td></tr>
+          <tr><td>4</td><td>Sampo</td><td>Perawatan Diri</td><td>Botol</td><td>22.000</td><td>3</td><td><span class="status status-low">Menipis</span></td><td><button class="btn btn-small">Edit</button> <button class="btn btn-small btn-outline">Hapus</button></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="stok" class="content-card">
+      <div class="section-heading"><div><h2>▤ Pemantauan Stok</h2><p class="muted">Perhatikan barang yang jumlahnya mulai menipis.</p></div></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Nama Barang</th><th>Stok Saat Ini</th><th>Batas Minimum</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Beras</td><td>10 Kg</td><td>3 Kg</td><td><span class="status status-safe">Aman</span></td></tr>
+          <tr><td>Minyak Goreng</td><td>5 Liter</td><td>6 Liter</td><td><span class="status status-low">Menipis</span></td></tr>
+          <tr><td>Sampo</td><td>3 Botol</td><td>4 Botol</td><td><span class="status status-low">Menipis</span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="belanja" class="content-card">
+      <div class="section-heading"><div><h2>☷ Daftar Belanja</h2><p class="muted">Catat barang yang perlu dibeli.</p></div><button class="btn btn-dark" type="button">＋ Tambah Belanja</button></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>No</th><th>Nama Barang</th><th>Jumlah</th><th>Prioritas</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Minyak Goreng</td><td>2 Liter</td><td><span class="status status-low">Penting</span></td><td><label class="check-label"><input type="checkbox"> Sudah dibeli</label></td></tr>
+          <tr><td>2</td><td>Tisu</td><td>3 Pack</td><td>Normal</td><td><label class="check-label"><input type="checkbox"> Sudah dibeli</label></td></tr>
+          <tr><td>3</td><td>Deterjen</td><td>1 Pack</td><td>Normal</td><td><label class="check-label"><input type="checkbox"> Sudah dibeli</label></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="laporan" class="content-card">
+      <div class="section-heading"><div><h2>▧ Laporan</h2><p class="muted">Ringkasan data stok dan kebutuhan belanja.</p></div><button class="btn btn-dark" type="button" onclick="window.print()">Cetak Laporan</button></div>
+      <div class="report-grid">
+        <div class="report-item"><span>Total data barang</span><strong>24 barang</strong></div>
+        <div class="report-item"><span>Total kategori</span><strong>5 kategori</strong></div>
+        <div class="report-item"><span>Total persediaan</span><strong>178 unit</strong></div>
+        <div class="report-item"><span>Barang perlu dibeli</span><strong>3 barang</strong></div>
+      </div>
+      <p class="muted report-note">Catatan: data di atas merupakan contoh untuk tampilan awal aplikasi.</p>
+    </section>
+    <footer class="footer">© 2026 Stok Rumah Tangga · Aplikasi pencatatan kebutuhan harian</footer>
+  </main>
+</body>
+</html>
