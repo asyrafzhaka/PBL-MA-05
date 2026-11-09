@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masuk - StokRumah (PRO-05)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+<div class="login-shell">
+    <aside class="side">
+        <div class="brand">
+            <div class="logo"><i class="fa-solid fa-house-laptop"></i></div>
+            <span>Stok<span>Rumah</span></span>
+        </div>
+        <div>
+            <h2>Cek isi lemari sebelum ke warung.</h2>
+            <p>Catat barang masuk dan keluar, lihat apa yang hampir habis, lalu belanja seperlunya saja.</p>
+        </div>
+        <div class="shelf" aria-hidden="true">
+            <div class="shelf-title"><i class="fa-solid fa-cart-shopping"></i> Perlu dibeli hari ini</div>
+            <ul>
+                <li><span>Minyak Goreng 2L</span><span class="qty">sisa 1</span></li>
+                <li><span>Sabun Mandi Cair</span><span class="qty">habis</span></li>
+                <li><span>Beras Premium 5kg</span><span class="ok">cukup</span></li>
+            </ul>
+        </div>
+    </aside>
+
+    <main class="panel">
+        <div class="card-login">
+            <h1>Masuk</h1>
+            <p class="sub">Silakan login untuk membuka aplikasi stok rumah tangga.</p>
+
+            <div id="errBox" class="alert-err" role="alert" aria-live="polite">
+                <i class="fa-solid fa-circle-exclamation"></i><span id="errText"></span>
+            </div>
+
+            <form id="loginForm" novalidate>
+                <div class="field">
+                    <label for="username">Username</label>
+                    <div class="input-wrap">
+                        <i class="fa-solid fa-user lead"></i>
+                        <input type="text" id="username" autocomplete="username" placeholder="Masukkan username" autofocus>
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="password">Password</label>
+                    <div class="input-wrap">
+                        <i class="fa-solid fa-lock lead"></i>
+                        <input type="password" id="password" autocomplete="current-password" placeholder="Masukkan password">
+                        <button type="button" class="toggle-pass" id="togglePass" aria-label="Tampilkan password">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="row-opt">
+                    <label class="check"><input type="checkbox" id="remember"> Ingat saya</label>
+                </div>
+                <button type="submit" class="btn-login" id="btnLogin">Masuk</button>
+            </form>
+
+            <div class="hint">
+                Akun uji coba: username <code>pengguna</code> dan password <code>admin123</code>
+            </div>
+        </div>
+    </main>
+</div>
+<script src="login.js"></script>
+</body>
+</html>
