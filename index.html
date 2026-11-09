@@ -1,32 +1,140 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login | Stok Rumah Tangga</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body class="login-page">
-  <main class="login-shell">
-    <section class="login-brand">
-      <div class="brand-icon">⌂</div>
-      <h1>Stok Rumah Tangga</h1>
-      <p>Kelola kebutuhan harian dengan lebih mudah dan teratur.</p>
-      <span class="copyright">© 2026 Stok Rumah Tangga</span>
-    </section>
-    <section class="login-form-panel">
-      <form class="login-form" action="dashboard.html">
-        <span class="eyebrow">SELAMAT DATANG</span>
-        <h2>Login</h2>
-        <p class="muted">Masuk untuk melanjutkan ke aplikasi.</p>
-        <label for="username">Username</label>
-        <input id="username" name="username" type="text" placeholder="Masukkan username" required>
-        <label for="password">Password</label>
-        <input id="password" name="password" type="password" placeholder="Masukkan password" required>
-        <button class="btn btn-dark btn-wide" type="submit">Login</button>
-        <p class="login-note">Demo tampilan: isi username dan password, lalu tekan Login.</p>
-      </form>
-    </section>
-  </main>
-</body>
-</html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Penjaga login: kalau belum login, arahkan ke login.html -->
+    <script>
+        if (!(sessionStorage.getItem('pro05_session') || localStorage.getItem('pro05_session'))) {
+            location.replace('login.html');
+        }
+    </script>
+    <title>StokRumah (PRO-05) - Aplikasi Stok & Belanja Kebutuhan Rumah Tangga</title>
+    <!--login-->
+    <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+<!-- Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <body class="bg-light text-dark app-font-sans app-antialiased min-vh-100 d-flex flex-column">
+
+    <!-- HEADER / TOPBAR (Sesuai Wireframe Konseptual) -->
+    <header class="bg-white border-bottom border sticky-top app-top-0 app-z-30 no-print">
+        <div class="px-3 py-2 d-flex align-items-center justify-content-between gap-3">
+            <!-- Logo & Brand -->
+            <div class="d-flex align-items-center gap-3">
+                <button id="mobileMenuBtn" class="d-md-none text-secondary app-hover-text-dark app-focus-no-outline">
+                    <i class="fa-solid fa-bars fs-4"></i>
+                </button>
+                <div class="d-flex align-items-center gap-2 app-cursor-pointer" onclick="switchTab('dashboard')">
+                    <div class="bg-primary text-white p-2 rounded-3 d-flex align-items-center justify-content-center">
+                        <i class="fa-solid fa-house-laptop fs-5"></i>
+                    </div>
+                    <div>
+                        <span class="fw-bold fs-4 text-dark app-tracking-tight">Stok<span class="text-primary">Rumah</span></span>
+                        <span class="d-none app-sm-inline-block ms-2 app-text-xs fw-semibold px-2 app-py-0-5 app-bg-primary-soft app-text-primary-dark rounded-2">PRO-05</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Global Search -->
+            <div class="flex-fill app-max-width-md d-none app-sm-block">
+                <div class="position-relative">
+                    <span class="position-absolute app-inset-y-0 app-left-0 ps-3 d-flex align-items-center pe-none app-text-muted">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </span>
+                    <input type="text" id="globalSearch" placeholder="Cari nama barang, kategori, lokasi..." 
+                           class="w-100 app-ps-10 pe-3 py-2 app-bg-gray text-body small rounded-3 app-focus-no-outline app-focus-ring app-focus-primary app-focus-white app-transition">
+                </div>
+            </div>
+
+            <!-- Profile Info -->
+            <div class="d-flex align-items-center gap-3">
+                <div class="d-flex align-items-center gap-3 border-start border ps-3">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&auto=format&fit=crop&q=80" 
+                         alt="Avatar" class="app-width-2rem-plus app-height-2rem-plus rounded-pill object-fit-cover app-ring app-ring-primary"
+                         onerror="this.src='https : //placehold.co/100x100/6366f1/ffffff?text=U'">
+                    <div class="d-none app-lg-block text-start">
+                        <div class="small fw-semibold text-body" id="navUserName">Pengguna Rumah/Kos</div>
+                        <div class="app-text-xs text-secondary">Aktor Utama</div>
+                    </div>
+                    <button type="button" onclick="logout()" title="Keluar" aria-label="Keluar" class="btn btn-sm btn-outline-secondary rounded-3 d-flex align-items-center gap-2">
+                        <i class="fa-solid fa-right-from-bracket"></i><span class="d-none d-md-inline">Keluar</span></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="d-flex flex-fill position-relative">
+        <!-- SIDEBAR NAVIGASI (Sesuai Wireframe Konseptual) -->
+        <aside id="sidebar" class="app-sidebar app-sidebar-hidden app-sidebar-width bg-white border-end border flex-shrink-0  app-md-static app-inset-y-0 app-left-0 app-z-20 app-sidebar-hidden app-md-translate-x-0 app-transition-transform app-duration-200 app-ease-in-out no-print  flex-column justify-content-between">
+            <div class="p-3 app-space-y-1">
+                <div class="app-text-xs fw-semibold app-text-muted text-uppercase app-tracking-wide px-3 mb-2">MENU UTAMA</div>
+                <nav class="app-space-y-1">
+                    <button onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-btn d-flex w-100 align-items-center gap-3 px-3 py-2 w-100 d-flex align-items-center gap-3 px-3 app-py-2-5 small fw-medium rounded-3 text-secondary app-hover-light app-transition">
+                        <i class="fa-solid fa-chart-pie app-width-1-25rem text-center text-primary"></i> Dashboard
+                    </button>
+                    
+                    <!-- Sub-group Data Master -->
+                    <div class="pt-2 pb-1 px-3 app-text-11 fw-bold app-text-muted text-uppercase app-tracking-wide">DATA MASTER</div>
+                    <button onclick="switchTab('kategori')" id="nav-kategori" class="nav-btn d-flex w-100 align-items-center gap-3 px-3 py-2 w-100 d-flex align-items-center gap-3 px-3 py-2 small fw-medium rounded-3 text-secondary app-hover-light app-transition">
+                        <i class="fa-solid fa-tags app-width-1-25rem text-center text-primary"></i> Kategori Barang
+                    </button>
+                    <button onclick="switchTab('barang')" id="nav-barang" class="nav-btn d-flex w-100 align-items-center gap-3 px-3 py-2 w-100 d-flex align-items-center gap-3 px-3 py-2 small fw-medium rounded-3 text-secondary app-hover-light app-transition">
+                        <i class="fa-solid fa-box-archive app-width-1-25rem text-center text-primary"></i> Data Barang
+                    </button>
+
+                    <!-- Sub-group Transaksi & Belanja -->
+                    <div class="pt-2 pb-1 px-3 app-text-11 fw-bold app-text-muted text-uppercase app-tracking-wide">TRANSAKSI & BELANJA</div>
+                    <button onclick="switchTab('mutasi')" id="nav-mutasi" class="nav-btn d-flex w-100 align-items-center gap-3 px-3 py-2 w-100 d-flex align-items-center gap-3 px-3 py-2 small fw-medium rounded-3 text-secondary app-hover-light app-transition">
+                        <i class="fa-solid fa-right-left app-width-1-25rem text-center text-primary"></i> Mutasi Stok
+                    </button>
+                    <button onclick="switchTab('belanja')" id="nav-belanja" class="nav-btn d-flex w-100 align-items-center gap-3 px-3 py-2 w-100 d-flex align-items-center justify-content-between px-3 py-2 small fw-medium rounded-3 text-secondary app-hover-light app-transition">
+                        <div class="d-flex align-items-center gap-3">
+                            <i class="fa-solid fa-cart-shopping app-width-1-25rem text-center text-primary"></i> Daftar Belanja
+                        </div>
+                        <span id="badgeBelanja" class="bg-danger text-white app-text-xs px-2 app-py-0-5 rounded-pill fw-bold d-none">0</span>
+                    </button>
+
+                    <!-- Sub-group Laporan -->
+                    <div class="pt-2 pb-1 px-3 app-text-11 fw-bold app-text-muted text-uppercase app-tracking-wide">PELAPORAN</div>
+                    <button onclick="switchTab('laporan')" id="nav-laporan" class="nav-btn d-flex w-100 align-items-center gap-3 px-3 py-2 w-100 d-flex align-items-center gap-3 px-3 py-2 small fw-medium rounded-3 text-secondary app-hover-light app-transition">
+                        <i class="fa-solid fa-file-lines app-width-1-25rem text-center text-primary"></i> Rekap Laporan
+                    </button>
+                </nav>
+            </div>
+            
+            <div class="p-3 m-3 bg-primary-subtle rounded-4 border app-border-primary app-text-xs">
+                <div class="d-flex align-items-center gap-2 app-text-primary-dark fw-semibold mb-1">
+                    <i class="fa-solid fa-database"></i> Status Penyimpanan
+                </div>
+                <p class="text-primary">Tersimpan di Lokal Storage Web (Relasional FK Validated).</p>
+                <button onclick="resetDataSeed()" class="mt-2 app-text-11 app-text-primary-dark text-decoration-underline fw-semibold app-hover-text-primary-dark">Reset Data Uji Standar</button>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="flex-fill p-3 app-md-p-6 app-lg-p-8 app-overflow-x-hidden main-content">
+            
+            <!-- ALERT NOTIFICATION CONTAINER -->
+            <div id="alertContainer" class="app-alert-container position-fixed app-top-16 app-right-4 app-z-50 app-space-y-2 app-max-width-sm w-100 no-print"></div>
+
+            <!-- HALAMAN 1: DASHBOARD -->
+            <section id="page-dashboard" class="page-content app-space-y-6">
+                <div class="d-flex flex-column app-sm-flex-row app-sm-items-center justify-content-between gap-3 border-bottom border pb-3">
+                    <div>
+                        <h1 class="fs-3 fw-bold text-dark">Dashboard Inventaris</h1>
+                        <p class="small text-secondary">Ringkasan cepat kondisi persediaan kebutuhan rumah tangga.</p>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <button onclick="openModalMutasi('Masuk')" class="bg-success app-hover-success-dark text-white small fw-medium app-px-3-5 py-2 rounded-3 d-flex align-items-center gap-2 app-transition shadow-sm">
+                            <i class="fa-solid fa-plus"></i> Stok Masuk
+                        </button>
+                        <button onclick="openModalMutasi('Keluar')" class="bg-danger app-hover-danger-dark text-white small fw-medium app-px-3-5 py-2 rounded-3 d-flex align-items-center gap-2 app-transition shadow-sm">
+                            <i class="fa-solid fa-minus"></i> Stok Keluar
+                        </button>
+                    </div>
+                </div>
