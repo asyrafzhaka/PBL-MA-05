@@ -19,7 +19,187 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <body class="bg-light text-dark app-font-sans app-antialiased min-vh-100 d-flex flex-column">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        @media print {
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+            .main-content { margin-left: 0 !important; padding: 0 !important; }
+            body { background-color: white; }
+        }
+
+        :root {
+            --app-primary: #4f46e5;
+            --app-border: #e2e8f0;
+            --app-muted: #94a3b8;
+        }
+        body { font-family: 'Inter', sans-serif; color: #1e293b; }
+        .app-font-sans { font-family: 'Inter', sans-serif; }
+        .app-antialiased { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        .app-bg-gray { background-color: #f1f5f9 !important; }
+        .app-bg-gray-soft { background-color: rgba(248,250,252,.7) !important; }
+        .app-bg-primary-soft { background-color: #e0e7ff !important; }
+        .app-text-muted { color: #94a3b8 !important; }
+        .app-text-primary-dark { color: #4338ca !important; }
+        .app-text-success-dark { color: #047857 !important; }
+        .app-text-danger-dark { color: #be123c !important; }
+        .app-text-warning-dark { color: #b45309 !important; }
+        .app-border-light { border-color: #f1f5f9 !important; }
+        .app-border-medium { border-color: #cbd5e1 !important; }
+        .app-border-primary { border-color: #e0e7ff !important; }
+        .app-text-xs { font-size: .75rem !important; }
+        .app-text-11 { font-size: 11px !important; }
+        .app-tracking-tight { letter-spacing: -.025em; }
+        .app-tracking-wide { letter-spacing: .08em; }
+        .app-sidebar-width { width: 16rem; }
+        .app-width-20rem { width: 20rem; }
+        .app-width-9rem { width: 9rem; }
+        .app-width-5rem { width: 5rem; }
+        .app-width-3rem { width: 3rem; }
+        .app-width-2rem-plus { width: 2.25rem; }
+        .app-width-1-75rem { width: 1.75rem; }
+        .app-width-1-25rem { width: 1.25rem; }
+        .app-width-1rem { width: 1rem; }
+        .app-height-3rem { height: 3rem; }
+        .app-height-2rem-plus { height: 2.25rem; }
+        .app-height-1-75rem { height: 1.75rem; }
+        .app-height-1rem { height: 1rem; }
+        .app-max-width-md { max-width: 28rem; }
+        .app-max-width-sm { max-width: 24rem; }
+        .app-max-width-3xl { max-width: 48rem; }
+        .app-p-1-5 { padding: .375rem; }
+        .app-px-2-5 { padding-left: .625rem; padding-right: .625rem; }
+        .app-px-3-5 { padding-left: .875rem; padding-right: .875rem; }
+        .app-py-0-5 { padding-top: .125rem; padding-bottom: .125rem; }
+        .app-py-2-5 { padding-top: .625rem; padding-bottom: .625rem; }
+        .app-py-3-5 { padding-top: .875rem; padding-bottom: .875rem; }
+        .app-ps-10 { padding-left: 2.5rem; }
+        .app-gap-2-5 { gap: .625rem; }
+        .app-space-y-1 > * + * { margin-top: .25rem; }
+        .app-space-y-2 > * + * { margin-top: .5rem; }
+        .app-space-y-3 > * + * { margin-top: .75rem; }
+        .app-space-y-3-5 > * + * { margin-top: .875rem; }
+        .app-space-y-4 > * + * { margin-top: 1rem; }
+        .app-space-y-6 > * + * { margin-top: 1.5rem; }
+        .app-space-x-2 > * + * { margin-left: .5rem; }
+        .app-divide-y > * + * { border-top: 1px solid #f1f5f9; }
+        .app-divide-light > * + * { border-color: #f1f5f9; }
+        .app-grid-1 { grid-template-columns: minmax(0, 1fr); }
+        .app-grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .app-hover-light:hover { background-color: #f1f5f9 !important; }
+        .app-hover-primary:hover { background-color: #eef2ff !important; }
+        .app-hover-primary-dark:hover { background-color: #4338ca !important; }
+        .app-hover-danger:hover { background-color: #fff1f2 !important; }
+        .app-hover-danger-dark:hover { background-color: #be123c !important; }
+        .app-hover-success-dark:hover { background-color: #047857 !important; }
+        .app-hover-dark:hover { background-color: #111827 !important; }
+        .app-hover-text-primary:hover { color: #3730a3 !important; }
+        .app-hover-text-primary-dark:hover { color: #312e81 !important; }
+        .app-hover-text-danger-dark:hover { color: #881337 !important; }
+        .app-hover-text-secondary:hover { color: #475569 !important; }
+        .app-hover-text-dark:hover { color: #111827 !important; }
+        .app-hover-text-white:hover { color: #fff !important; }
+        .app-focus-no-outline:focus { outline: 0 !important; }
+        .app-focus-ring:focus { box-shadow: 0 0 0 .25rem rgba(79,70,229,.2) !important; }
+        .app-focus-primary:focus { border-color: #6366f1 !important; }
+        .app-focus-white:focus { background-color: #fff !important; }
+        .app-ring { box-shadow: 0 0 0 2px currentColor; }
+        .app-ring-primary { box-shadow: 0 0 0 2px #e0e7ff; }
+        .app-cursor-pointer { cursor: pointer; }
+        .app-transform { transform: translateZ(0); }
+        .app-transition { transition: all .2s ease; }
+        .app-transition-transform { transition: transform .2s ease-in-out; }
+        .app-duration-200 { transition-duration: .2s; }
+        .app-ease-in-out { transition-timing-function: ease-in-out; }
+        .app-backdrop-blur { backdrop-filter: blur(4px); }
+        .app-overflow-x-hidden { overflow-x: hidden; }
+        .app-z-20 { z-index: 20; }
+        .app-z-30 { z-index: 1030; }
+        .app-z-50 { z-index: 1050; }
+        .app-top-0 { top: 0; }
+        .app-top-16 { top: 4rem; }
+        .app-right-4 { right: 1rem; }
+        .app-left-0 { left: 0; }
+        .app-inset-0 { inset: 0; }
+        .app-inset-y-0 { top: 0; bottom: 0; }
+    
+        .app-sidebar {
+            width: 16rem; flex-shrink: 0; background: #fff; border-right: 1px solid var(--app-border);
+            display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .app-sidebar-hidden { transform: translateX(-100%); }
+        .app-modal-overlay.d-none { display: none !important; }
+        .app-modal-overlay:not(.d-none) { display: flex !important; }
+        .app-p-3-5 { padding: .875rem; }
+        .app-text-white-80 { color: rgba(255,255,255,.8); }
+        .app-opacity-0 { opacity: 0; }
+        .app-translate-y-2 { transform: translateY(.5rem); }
+        .app-modal-overlay {
+            position: fixed; inset: 0; z-index: 1055; display: flex; align-items: center;
+            justify-content: center; padding: 1rem; background: rgba(15,23,42,.5);
+            backdrop-filter: blur(4px);
+        }
+        .app-modal-dialog {
+            width: 100%; max-width: 28rem; max-height: calc(100vh - 2rem);
+            overflow-y: auto; background: #fff; border-radius: 1rem; padding: 1.5rem;
+            box-shadow: 0 1rem 3rem rgba(0,0,0,.2);
+        }
+        .app-alert-container { position: fixed; top: 4rem; right: 1rem; z-index: 1060; width: min(100% - 2rem, 24rem); }
+        .app-main-padding { padding: 1rem; }
+        .app-card { background: #fff; border: 1px solid var(--app-border); border-radius: .75rem; box-shadow: 0 .125rem .25rem rgba(0,0,0,.04); }
+        .app-table { width: 100%; font-size: .875rem; text-align: left; }
+        .app-table th, .app-table td { padding: .75rem 1rem; vertical-align: middle; }
+        .app-table thead { background: #f8fafc; color: #64748b; font-size: .75rem; text-transform: uppercase; }
+        .app-table tbody tr:hover { background: #f8fafc; }
+        .nav-btn { border: 0; background: transparent; text-align: left; color: #64748b; }
+        .nav-btn:hover, .nav-btn.active { background: #eef2ff; color: #4f46e5; }
+        .nav-btn.active { font-weight: 600; }
+        .page-content { width: 100%; }
+        .main-content { min-width: 0; }
+        .app-overlay { background: rgba(15,23,42,.5) !important; }
+        .app-bg-gray-soft { background: rgba(248,250,252,.7) !important; }
+        .app-text-danger-dark { color: #be123c !important; }
+        .app-text-warning-dark { color: #b45309 !important; }
+        .app-text-success-dark { color: #047857 !important; }
+        .app-bg-primary-soft { background: #e0e7ff !important; }
+        .app-print-only { display: none; }
+        @media (min-width: 576px) {
+            .app-sm-flex-row { flex-direction: row !important; }
+            .app-sm-items-center { align-items: center !important; }
+            .app-sm-block { display: block !important; }
+            .app-sm-inline-block { display: inline-block !important; }
+            .app-sm-grid-3 { grid-template-columns: repeat(3,minmax(0,1fr)); }
+        }
+        @media (min-width: 768px) {
+            .app-sidebar, .app-sidebar-hidden { position: static !important; transform: none !important; }
+            .app-md-static { position: static !important; }
+            .app-md-translate-x-0 { transform: none !important; }
+            .app-md-flex-row { flex-direction: row !important; }
+            .app-md-p-6 { padding: 1.5rem !important; }
+            .app-md-width-20rem { width: 20rem !important; }
+            .app-md-width-auto { width: auto !important; }
+            .app-md-grid-3 { grid-template-columns: repeat(3,minmax(0,1fr)); }
+        }
+        @media (min-width: 992px) {
+            .app-lg-block { display: block !important; }
+            .app-lg-p-8 { padding: 2rem !important; }
+            .app-lg-grid-2 { grid-template-columns: repeat(2,minmax(0,1fr)); }
+        }
+        @media (max-width: 767.98px) {
+            .app-sidebar { position: fixed; top: 0; bottom: 0; left: 0; z-index: 1040; transition: transform .2s ease-in-out; }
+            .app-sidebar.app-sidebar-hidden { transform: translateX(-100%); }
+            .app-main-padding { padding: 1rem; }
+        }
+        @media print {
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+            .main-content { margin-left: 0 !important; padding: 0 !important; }
+            body { background: white !important; }
+        }
+
+    </style>
+</head>
+<body class="bg-light text-dark app-font-sans app-antialiased min-vh-100 d-flex flex-column">
 
     <!-- HEADER / TOPBAR (Sesuai Wireframe Konseptual) -->
     <header class="bg-white border-bottom border sticky-top app-top-0 app-z-30 no-print">
@@ -138,3 +318,1147 @@
                         </button>
                     </div>
                 </div>
+
+                <!-- 3 KPI Utama (Sesuai Rancangan UI/UX) -->
+                <div class="d-grid app-grid-1 app-sm-grid-3 gap-3">
+                    <div class="bg-white p-4 rounded-4 border border shadow-sm d-flex align-items-center justify-content-between">
+                        <div>
+                            <span class="app-text-xs fw-semibold text-uppercase app-tracking-wide app-text-muted">Jumlah Barang</span>
+                            <div class="fs-3 fw-bold text-dark mt-1" id="kpiTotalBarang">0</div>
+                            <span class="app-text-xs text-secondary mt-1 d-inline-block">Item Terdaftar</span>
+                        </div>
+                        <div class="app-width-3rem app-height-3rem bg-primary-subtle text-primary rounded-4 d-flex align-items-center justify-content-center fs-4">
+                            <i class="fa-solid fa-boxes-stacked"></i>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-4 border border shadow-sm d-flex align-items-center justify-content-between">
+                        <div>
+                            <span class="app-text-xs fw-semibold text-uppercase app-tracking-wide app-text-muted">Stok Rendah</span>
+                            <div class="fs-3 fw-bold text-warning mt-1" id="kpiStokRendah">0</div>
+                            <span class="app-text-xs text-warning mt-1 d-inline-block fw-medium">&le; Stok Minimum</span>
+                        </div>
+                        <div class="app-width-3rem app-height-3rem bg-warning-subtle text-warning rounded-4 d-flex align-items-center justify-content-center fs-4">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-4 border border shadow-sm d-flex align-items-center justify-content-between">
+                        <div>
+                            <span class="app-text-xs fw-semibold text-uppercase app-tracking-wide app-text-muted">Mutasi Hari Ini</span>
+                            <div class="fs-3 fw-bold text-dark mt-1" id="kpiMutasiHariIni">0</div>
+                            <span class="app-text-xs text-secondary mt-1 d-inline-block">Transaksi Perubahan Stok</span>
+                        </div>
+                        <div class="app-width-3rem app-height-3rem bg-info-subtle text-info rounded-4 d-flex align-items-center justify-content-center fs-4">
+                            <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dashboard Widgets Grid -->
+                <div class="d-grid app-grid-1 app-lg-grid-2 gap-4">
+                    <!-- Barang Hampir Habis / Perlu Dibeli -->
+                    <div class="bg-white rounded-4 border border shadow-sm overflow-hidden d-flex flex-column">
+                        <div class="p-3 border-bottom app-border-light d-flex align-items-center justify-content-between app-bg-gray-soft">
+                            <h2 class="fw-semibold text-dark d-flex align-items-center gap-2 small">
+                                <i class="fa-solid fa-circle-exclamation text-warning"></i>
+                                Perlu Dibeli (Stok &le; Minimum)
+                            </h2>
+                            <button onclick="switchTab('belanja')" class="app-text-xs text-primary app-hover-text-primary fw-medium">
+                                Kelola Belanja &rarr;
+                            </button>
+                        </div>
+                        <div class="p-3 flex-fill">
+                            <div class="table-responsive">
+                                <table class="table table-hover app-table small text-start">
+                                    <thead class="app-text-xs app-text-muted text-uppercase bg-light border-bottom app-border-light">
+                                        <tr>
+                                            <th class="px-3 py-2">Barang</th>
+                                            <th class="px-3 py-2">Lokasi</th>
+                                            <th class="px-3 py-2 text-center">Stok / Min</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dashLowStockTable" class="app-divide-y app-divide-light"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mutasi Stok Terbaru -->
+                    <div class="bg-white rounded-4 border border shadow-sm overflow-hidden d-flex flex-column">
+                        <div class="p-3 border-bottom app-border-light d-flex align-items-center justify-content-between app-bg-gray-soft">
+                            <h2 class="fw-semibold text-dark d-flex align-items-center gap-2 small">
+                                <i class="fa-solid fa-clock-rotate-left text-primary"></i>
+                                Transaksi Mutasi Terbaru
+                            </h2>
+                            <button onclick="switchTab('mutasi')" class="app-text-xs text-primary app-hover-text-primary fw-medium">
+                                Lihat Riwayat &rarr;
+                            </button>
+                        </div>
+                        <div class="p-3 flex-fill">
+                            <div id="dashMutasiList" class="app-space-y-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HALAMAN 2: MODUL KATEGORI BARANG (FR-01) -->
+            <section id="page-kategori" class="page-content app-space-y-6 d-none">
+                <div class="d-flex flex-column app-sm-flex-row app-sm-items-center justify-content-between gap-3 border-bottom border pb-3">
+                    <div>
+                        <h1 class="fs-3 fw-bold text-dark">Master Kategori Barang</h1>
+                        <p class="small text-secondary">Kelola kategori pengelompokan kebutuhan (Sembako, Mandi, Kebersihan, dll).</p>
+                    </div>
+                    <button onclick="openModalKategori()" class="bg-primary app-hover-primary-dark text-white fw-medium px-3 py-2 rounded-3 d-flex align-items-center gap-2 app-transition shadow-sm small">
+                        <i class="fa-solid fa-plus"></i> + Tambah Kategori
+                    </button>
+                </div>
+
+                <div class="bg-white rounded-4 border border shadow-sm overflow-hidden app-max-width-3xl">
+                    <div class="table-responsive">
+                        <table class="table table-hover app-table small text-start">
+                            <thead class="app-text-xs text-uppercase bg-light border-bottom border text-secondary fw-semibold">
+                                <tr>
+                                    <th class="px-3 app-py-3-5 app-width-5rem text-center">ID</th>
+                                    <th class="px-3 app-py-3-5">Nama Kategori</th>
+                                    <th class="px-3 app-py-3-5 text-center">Jumlah Item Terkait</th>
+                                    <th class="px-3 app-py-3-5 text-center app-width-9rem">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="kategoriTableBody" class="app-divide-y app-divide-light"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HALAMAN 3: MODUL DATA BARANG (FR-02 & FR-05) -->
+            <section id="page-barang" class="page-content app-space-y-6 d-none">
+                <div class="d-flex flex-column app-sm-flex-row app-sm-items-center justify-content-between gap-3 border-bottom border pb-3">
+                    <div>
+                        <h1 class="fs-3 fw-bold text-dark">Data Master Barang</h1>
+                        <p class="small text-secondary">Kelola item persediaan, lokasi penyimpanan, dan ambang batas minimum.</p>
+                    </div>
+                    <button onclick="openModalBarang()" class="bg-primary app-hover-primary-dark text-white fw-medium px-3 py-2 rounded-3 d-flex align-items-center gap-2 app-transition shadow-sm small">
+                        <i class="fa-solid fa-plus"></i> + Tambah Barang
+                    </button>
+                </div>
+
+                <!-- Filter & Search (FR-05) -->
+                <div class="bg-white p-3 rounded-4 border border shadow-sm d-flex flex-column app-md-flex-row gap-3 justify-content-between align-items-center">
+                    <div class="w-100 app-md-width-20rem">
+                        <input type="text" id="searchBarangInput" placeholder="Cari nama, kategori, lokasi..." oninput="renderBarangTable()"
+                               class="w-100 app-px-3-5 py-2 bg-light border border rounded-3 small app-focus-no-outline app-focus-ring app-focus-primary app-focus-white">
+                    </div>
+                    <div class="w-100 app-md-width-auto d-flex flex-wrap gap-2 align-items-center">
+                        <select id="filterKategoriBarang" onchange="renderBarangTable()" class="px-3 py-2 bg-light border border rounded-3 small text-body app-focus-no-outline app-focus-ring app-focus-primary">
+                            <option value="">Semua Kategori</option>
+                        </select>
+                        <select id="filterStokStatus" onchange="renderBarangTable()" class="px-3 py-2 bg-light border border rounded-3 small text-body app-focus-no-outline app-focus-ring app-focus-primary">
+                            <option value="">Semua Status Stok</option>
+                            <option value="rendah">Stok Rendah (&le; Min)</option>
+                            <option value="aman">Stok Aman (> Min)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Data Table Barang (FR-02 & FR-06) -->
+                <div class="bg-white rounded-4 border border shadow-sm overflow-hidden">
+                    <div class="table-responsive">
+                        <table class="table table-hover app-table small text-start">
+                            <thead class="app-text-xs text-uppercase bg-light border-bottom border text-secondary fw-semibold">
+                                <tr>
+                                    <th class="px-3 app-py-3-5">Nama Barang</th>
+                                    <th class="px-3 app-py-3-5">Kategori</th>
+                                    <th class="px-3 app-py-3-5 text-center">Stok Saat Ini</th>
+                                    <th class="px-3 app-py-3-5 text-center">Stok Minimum</th>
+                                    <th class="px-3 app-py-3-5">Satuan</th>
+                                    <th class="px-3 app-py-3-5">Lokasi Penyimpanan</th>
+                                    <th class="px-3 app-py-3-5 text-center">Status Stok</th>
+                                    <th class="px-3 app-py-3-5 text-center">Aksi Edit / Hapus</th>
+                                </tr>
+                            </thead>
+                            <tbody id="barangTableBody" class="app-divide-y app-divide-light"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HALAMAN 4: MODUL MUTASI STOK (FR-03 & FR-07) -->
+            <section id="page-mutasi" class="page-content app-space-y-6 d-none">
+                <div class="d-flex flex-column app-sm-flex-row app-sm-items-center justify-content-between gap-3 border-bottom border pb-3">
+                    <div>
+                        <h1 class="fs-3 fw-bold text-dark">Mutasi Stok (Transaksi)</h1>
+                        <p class="small text-secondary">Pencatatan aktivitas stok barang masuk (pembelian) atau keluar (pemakaian).</p>
+                    </div>
+                    <button onclick="openModalMutasi()" class="bg-primary app-hover-primary-dark text-white fw-medium px-3 py-2 rounded-3 d-flex align-items-center gap-2 app-transition shadow-sm small">
+                        <i class="fa-solid fa-plus"></i> + Catat Transaksi Mutasi
+                    </button>
+                </div>
+
+                <!-- Search & Filter Mutasi -->
+                <div class="bg-white p-3 rounded-4 border border shadow-sm d-flex flex-column app-md-flex-row gap-3 justify-content-between align-items-center">
+                    <div class="w-100 app-md-width-20rem">
+                        <input type="text" id="searchMutasiInput" placeholder="Cari barang / keterangan..." oninput="renderMutasiTable()"
+                               class="w-100 app-px-3-5 py-2 bg-light border border rounded-3 small app-focus-no-outline app-focus-ring app-focus-primary app-focus-white">
+                    </div>
+                    <div class="w-100 app-md-width-auto d-flex flex-wrap gap-2 align-items-center">
+                        <select id="filterJenisMutasi" onchange="renderMutasiTable()" class="px-3 py-2 bg-light border border rounded-3 small text-body app-focus-no-outline app-focus-ring app-focus-primary">
+                            <option value="">Semua Jenis Mutasi</option>
+                            <option value="Masuk">Stok Masuk</option>
+                            <option value="Keluar">Stok Keluar</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-4 border border shadow-sm overflow-hidden">
+                    <div class="table-responsive">
+                        <table class="table table-hover app-table small text-start">
+                            <thead class="app-text-xs text-uppercase bg-light border-bottom border text-secondary fw-semibold">
+                                <tr>
+                                    <th class="px-3 app-py-3-5">Tanggal</th>
+                                    <th class="px-3 app-py-3-5">Nama Barang</th>
+                                    <th class="px-3 app-py-3-5 text-center">Jenis</th>
+                                    <th class="px-3 app-py-3-5 text-center">Jumlah</th>
+                                    <th class="px-3 app-py-3-5">Keterangan</th>
+                                </tr>
+                            </thead>
+                            <tbody id="mutasiTableBody" class="app-divide-y app-divide-light"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HALAMAN 5: MODUL DAFTAR BELANJA (FR-04 & FR-06) -->
+            <section id="page-belanja" class="page-content app-space-y-6 d-none">
+                <div class="d-flex flex-column app-sm-flex-row app-sm-items-center justify-content-between gap-3 border-bottom border pb-3">
+                    <div>
+                        <h1 class="fs-3 fw-bold text-dark">Daftar Belanja Kebutuhan</h1>
+                        <p class="small text-secondary">Daftar otomatis untuk barang yang berstatus stok &le; minimum.</p>
+                    </div>
+                    <div class="d-flex gap-2 no-print">
+                        <button onclick="window.print()" class="bg-dark app-hover-dark text-white fw-medium px-3 py-2 rounded-3 d-flex align-items-center gap-2 app-transition shadow-sm small">
+                            <i class="fa-solid fa-print"></i> Cetak Daftar Belanja
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Printable Header -->
+                <div class="d-none print-only mb-4 border-bottom pb-3">
+                    <h2 class="fs-4 fw-bold">DAFTAR BELANJA KEBUTUHAN RUMAH TANGGA</h2>
+                    <p class="small text-gray-500">Dicetak pada: <span id="printDate"></span></p>
+                </div>
+
+                <div class="bg-white rounded-4 border border shadow-sm overflow-hidden">
+                    <div class="p-3 border-bottom app-border-light app-bg-gray-soft d-flex align-items-center justify-content-between">
+                        <span class="small fw-semibold text-body">Daftar Item Perlu Dibeli</span>
+                        <span id="totalBelanjaItem" class="app-text-xs fw-bold text-primary bg-primary-subtle app-px-2-5 py-1 rounded-pill">0 Item</span>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover app-table small text-start">
+                            <thead class="app-text-xs text-uppercase bg-light border-bottom border text-secondary fw-semibold">
+                                <tr>
+                                    <th class="px-3 app-py-3-5 app-width-3rem text-center no-print">Penanda</th>
+                                    <th class="px-3 app-py-3-5">Nama Barang</th>
+                                    <th class="px-3 app-py-3-5">Kategori</th>
+                                    <th class="px-3 app-py-3-5 text-center">Stok Saat Ini</th>
+                                    <th class="px-3 app-py-3-5 text-center">Stok Minimum</th>
+                                    <th class="px-3 app-py-3-5 text-center">Rekomendasi Beli</th>
+                                    <th class="px-3 app-py-3-5">Lokasi Belanja/Simpan</th>
+                                    <th class="px-3 app-py-3-5 text-center no-print">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="belanjaTableBody" class="app-divide-y app-divide-light"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HALAMAN 6: MODUL REKAP LAPORAN (FR-07 & MODUL PELAPORAN) -->
+            <section id="page-laporan" class="page-content app-space-y-6 d-none">
+                <div class="d-flex flex-column app-sm-flex-row app-sm-items-center justify-content-between gap-3 border-bottom border pb-3">
+                    <div>
+                        <h1 class="fs-3 fw-bold text-dark">Rekap Pelaporan Sederhana</h1>
+                        <p class="small text-secondary">Laporan rekapitulasi pergerakan mutasi dan posisi stok berdasar kriteria filter.</p>
+                    </div>
+                    <button onclick="window.print()" class="bg-dark app-hover-dark text-white fw-medium px-3 py-2 rounded-3 d-flex align-items-center gap-2 app-transition shadow-sm small no-print">
+                        <i class="fa-solid fa-file-pdf"></i> Cetak Laporan
+                    </button>
+                </div>
+
+                <!-- Filter Periode/Kategori -->
+                <div class="bg-white p-3 rounded-4 border border shadow-sm d-grid app-grid-1 app-md-grid-3 gap-3 no-print">
+                    <div>
+                        <label class="d-block app-text-xs fw-semibold text-secondary mb-1">Filter Kategori</label>
+                        <select id="filterLaporanKategori" onchange="renderLaporan()" class="w-100 px-3 py-2 bg-light border border rounded-3 small text-body app-focus-no-outline app-focus-ring app-focus-primary">
+                            <option value="">Semua Kategori</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="d-block app-text-xs fw-semibold text-secondary mb-1">Dari Tanggal Mutasi</label>
+                        <input type="date" id="filterLaporanAwal" onchange="renderLaporan()" class="w-100 px-3 py-2 bg-light border border rounded-3 small text-body app-focus-no-outline app-focus-ring app-focus-primary">
+                    </div>
+                    <div>
+                        <label class="d-block app-text-xs fw-semibold text-secondary mb-1">Sampai Tanggal Mutasi</label>
+                        <input type="date" id="filterLaporanAkhir" onchange="renderLaporan()" class="w-100 px-3 py-2 bg-light border border rounded-3 small text-body app-focus-no-outline app-focus-ring app-focus-primary">
+                    </div>
+                </div>
+
+                <!-- Card Summary Automatic Calculation -->
+                <div class="d-grid app-grid-1 app-sm-grid-3 gap-3">
+                    <div class="bg-white p-3 rounded-4 border border shadow-sm text-center">
+                        <span class="app-text-xs fw-semibold app-text-muted text-uppercase">Item Dilaporkan</span>
+                        <div class="fs-4 fw-bold text-dark mt-1" id="lapTotalItem">0</div>
+                    </div>
+                    <div class="bg-white p-3 rounded-4 border border shadow-sm text-center">
+                        <span class="app-text-xs fw-semibold app-text-muted text-uppercase">Total Mutasi Masuk</span>
+                        <div class="fs-4 fw-bold text-success mt-1" id="lapTotalMasuk">0</div>
+                    </div>
+                    <div class="bg-white p-3 rounded-4 border border shadow-sm text-center">
+                        <span class="app-text-xs fw-semibold app-text-muted text-uppercase">Total Mutasi Keluar</span>
+                        <div class="fs-4 fw-bold text-danger mt-1" id="lapTotalKeluar">0</div>
+                    </div>
+                </div>
+
+                <!-- Table Rekap -->
+                <div class="bg-white rounded-4 border border shadow-sm overflow-hidden">
+                    <div class="p-3 border-bottom app-border-light fw-semibold text-dark small">
+                        Tabel Rekapitulasi Pergerakan Barang
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover app-table small text-start">
+                            <thead class="app-text-xs text-uppercase bg-light border-bottom border text-secondary fw-semibold">
+                                <tr>
+                                    <th class="px-3 app-py-3-5">Nama Barang</th>
+                                    <th class="px-3 app-py-3-5">Kategori</th>
+                                    <th class="px-3 app-py-3-5 text-center">Jumlah Masuk</th>
+                                    <th class="px-3 app-py-3-5 text-center">Jumlah Keluar</th>
+                                    <th class="px-3 app-py-3-5 text-center">Stok Akhir</th>
+                                    <th class="px-3 app-py-3-5">Lokasi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="laporanTableBody" class="app-divide-y app-divide-light"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- MODAL FORM KATEGORI (FR-01) -->
+    <div id="modalKategori" class="app-modal-overlay  app-inset-0 app-overlay app-backdrop-blur app-z-50  align-items-center justify-content-center p-3 d-none no-print">
+        <div class="app-modal-dialog app-space-y-4">
+            <div class="d-flex justify-content-between align-items-center border-bottom pb-3">
+                <h3 id="modalKategoriTitle" class="fs-5 fw-bold text-dark">Tambah Kategori</h3>
+                <button onclick="closeModalKategori()" class="app-text-muted app-hover-text-secondary fs-5">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <form id="formKategori" onsubmit="saveKategori(event)" class="app-space-y-4">
+                <input type="hidden" id="kategoriId">
+                <div>
+                    <label class="d-block app-text-xs fw-semibold text-body mb-1">Nama Kategori *</label>
+                    <input type="text" id="kategoriNama" required placeholder="Contoh: Sembako & Dapur"
+                           class="w-100 app-px-3-5 py-2 border app-border-medium rounded-3 small app-focus-no-outline app-focus-ring app-focus-primary">
+                </div>
+                <div class="d-flex justify-content-end gap-2 pt-3 border-top">
+                    <button type="button" onclick="closeModalKategori()" class="px-3 py-2 small fw-medium text-secondary app-hover-light rounded-3 app-transition">Batal</button>
+                    <button type="submit" class="px-3 py-2 small fw-medium bg-primary app-hover-primary-dark text-white rounded-3 app-transition shadow-sm">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL FORM BARANG (FR-02) -->
+    <div id="modalBarang" class="app-modal-overlay  app-inset-0 app-overlay app-backdrop-blur app-z-50  align-items-center justify-content-center p-3 d-none no-print">
+        <div class="app-modal-dialog app-space-y-4">
+            <div class="d-flex justify-content-between align-items-center border-bottom pb-3">
+                <h3 id="modalBarangTitle" class="fs-5 fw-bold text-dark">Tambah Data Barang</h3>
+                <button onclick="closeModalBarang()" class="app-text-muted app-hover-text-secondary fs-5">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <form id="formBarang" onsubmit="saveBarang(event)" class="app-space-y-3-5">
+                <input type="hidden" id="barangId">
+                <div>
+                    <label class="d-block app-text-xs fw-semibold text-body mb-1">Nama Barang *</label>
+                    <input type="text" id="barangNama" required placeholder="Contoh: Beras Premium 5kg"
+                           class="w-100 app-px-3-5 py-2 border app-border-medium rounded-3 small app-focus-no-outline app-focus-ring app-focus-primary">
+                </div>
+                
+                <div class="d-grid app-grid-2 gap-3">
+                    <div>
+                        <label class="d-block app-text-xs fw-semibold text-body mb-1">Kategori *</label>
+                        <select id="barangKategoriId" required class="w-100 app-px-3-5 py-2 border app-border-medium rounded-3 small app-focus-no-outline app-focus-ring app-focus-primary">
+                            <!-- Dynamic Categories -->
+                        </select>
+                    </div>
+                    <div>
+                        <label class="d-block app-text-xs fw-semibold text-body mb-1">Satuan *</label>
+                        <input type="text" id="barangSatuan" required placeholder="Kg / Pcs / Botol"
+                               class="w-100 app-px-3-5 py-2 border app-border-medium rounded-3 small app-focus-no-outline app-focus-ring app-focus-primary">
+                    </div>
+                </div>
+
+                <div class="d-grid app-grid-2 gap-3">
+                    <div>
+                        <label class="d-block app-text-xs fw-semibold text-body mb-1">Stok Saat Ini *</label>
+                        <input type="number" min="0" id="barangStok" required placeholder="0"
+                               class="w-100 app-px-3-5 py-2 border app-border-medium rounded-3 small app-focus-no-outline app-focus-ring app-focus-primary">
+                    </div>
+                    <div>
+                        <label class="d-block app-text-xs fw-semibold text-body mb-1">Stok Minimum *</label>
+                        <input type="number" min="0" id="barangMin" required placeholder="1"
+                               class="w-100 app-px-3-5 py-2 border app-border-medium rounded-3 small app-focus-no-outline app-focus-ring app-focus-primary">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="d-block app-text-xs fw-semibold text-body mb-1">Lokasi Penyimpanan *</label>
+                    <input type="text" id="barangLokasi" required placeholder="Contoh: Rak Dapur Utama / Dapur Belakang"
+                           class="w-100 app-px-3-5 py-2 border app-border-medium rounded-3 small app-focus-no-outline app-focus-ring app-focus-primary">
+                </div>
+
+                <div class="d-flex justify-content-end gap-2 pt-3 border-top">
+                    <button type="button" onclick="closeModalBarang()" class="px-3 py-2 small fw-medium text-secondary app-hover-light rounded-3 app-transition">Batal</button>
+                    <button type="submit" class="px-3 py-2 small fw-medium bg-primary app-hover-primary-dark text-white rounded-3 app-transition shadow-sm">Simpan Barang</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL FORM MUTASI STOK (FR-03) -->
+    <div id="modalMutasi" class="app-modal-overlay  app-inset-0 app-overlay app-backdrop-blur app-z-50  align-items-center justify-content-center p-3 d-none no-print">
+        <div class="app-modal-dialog app-space-y-4">
+            <div class="d-flex justify-content-between align-items-center border-bottom pb-3">
+                <h3 class="fs-5 fw-bold text-dark">Catat Mutasi Stok</h3>
+                <button onclick="closeModalMutasi()" class="app-text-muted app-hover-text-secondary fs-5">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <form id="formMutasi" onsubmit="saveMutasi(event)" class="app-space-y-3-5">
+                <div>
+                    <label class="d-block app-text-xs fw-semibold text-body mb-1">Pilih Barang *</label>
+                    <select id="mutasiBarangId" required class="w-100 app-px-3-5 py-2 border app-border-medium rounded-3 small app-focus-no-outline app-focus-ring app-focus-primary">
+                        <!-- Dynamic Barang -->
+                    </select>
+                </div>
+
+                <div class="d-grid app-grid-2 gap-3">
+                    <div>
+                        <label class="d-block app-text-xs fw-semibold text-body mb-1">Jenis Mutasi *</label>
+                        <select id="mutasiJenis" required class="w-100 app-px-3-5 py-2 border app-border-medium rounded-3 small app-focus-no-outline app-focus-ring app-focus-primary">
+                            <option value="Masuk">Masuk (+ Belanja)</option>
+                            <option value="Keluar">Keluar (- Terpakai)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="d-block app-text-xs fw-semibold text-body mb-1">Jumlah *</label>
+                        <input type="number" min="1" id="mutasiJumlah" required placeholder="1"
+                               class="w-100 app-px-3-5 py-2 border app-border-medium rounded-3 small app-focus-no-outline app-focus-ring app-focus-primary">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="d-block app-text-xs fw-semibold text-body mb-1">Tanggal *</label>
+                    <input type="date" id="mutasiTanggal" required
+                           class="w-100 app-px-3-5 py-2 border app-border-medium rounded-3 small app-focus-no-outline app-focus-ring app-focus-primary">
+                </div>
+
+                <div>
+                    <label class="d-block app-text-xs fw-semibold text-body mb-1">Keterangan *</label>
+                    <input type="text" id="mutasiKeterangan" required placeholder="Contoh: Belanja di Supermarket / Dipakai Dapur"
+                           class="w-100 app-px-3-5 py-2 border app-border-medium rounded-3 small app-focus-no-outline app-focus-ring app-focus-primary">
+                </div>
+
+                <div class="d-flex justify-content-end gap-2 pt-3 border-top">
+                    <button type="button" onclick="closeModalMutasi()" class="px-3 py-2 small fw-medium text-secondary app-hover-light rounded-3 app-transition">Batal</button>
+                    <button type="submit" class="px-3 py-2 small fw-medium bg-primary app-hover-primary-dark text-white rounded-3 app-transition shadow-sm">Simpan Mutasi</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT ENGINE & STATE MANAGEMENT -->
+    <script>
+        // DATA SAMEL AWAL (SEED DATA UJI RANCANGAN BASIS DATA)
+        const SEED_KATEGORI = [
+            { id_kategori: 1, nama_kategori: 'Sembako & Dapur' },
+            { id_kategori: 2, nama_kategori: 'Mandi & Kebersihan' },
+            { id_kategori: 3, nama_kategori: 'Air Minum & Snacking' },
+            { id_kategori: 4, nama_kategori: 'Obat & Kesehatan' }
+        ];
+
+        const SEED_BARANG = [
+            { id_barang: 1, id_kategori: 1, nama_barang: 'Beras Premium 5kg', satuan: 'Karung', stok: 2, stok_minimum: 1, lokasi: 'Lemari Dapur Bottom' },
+            { id_barang: 2, id_kategori: 1, nama_barang: 'Minyak Goreng 2L', satuan: 'Kantong', stok: 1, stok_minimum: 2, lokasi: 'Rak Dapur Atas' },
+            { id_barang: 3, id_kategori: 2, nama_barang: 'Sabun Mandi Cair 450ml', satuan: 'Botol', stok: 0, stok_minimum: 2, lokasi: 'Lemari Kamar Mandi' },
+            { id_barang: 4, id_kategori: 2, nama_barang: 'Deterjen Bubuk 1kg', satuan: 'Bungkus', stok: 1, stok_minimum: 1, lokasi: 'Rak Cuci Baju' },
+            { id_barang: 5, id_kategori: 3, nama_barang: 'Galon Air Minum 19L', satuan: 'Galon', stok: 1, stok_minimum: 2, lokasi: 'Dispenser Dapur' }
+        ];
+
+        const SEED_MUTASI = [
+            { id_mutasi: 1, id_barang: 2, tanggal: getTodayDateStr(), jenis: 'Keluar', jumlah: 1, keterangan: 'Memasak sehari-hari' },
+            { id_mutasi: 2, id_barang: 1, tanggal: getTodayDateStr(), jenis: 'Masuk', jumlah: 2, keterangan: 'Belanja bulanan' }
+        ];
+
+        // STATE IN-MEMORY
+        let categories = [];
+        let items = [];
+        let mutations = [];
+        let shoppingChecked = {};
+
+        // INITIALIZATION
+        window.addEventListener('DOMContentLoaded', () => {
+            loadStorage();
+            initDateInputs();
+            initSidebar();
+            document.getElementById('printDate').innerText = new Date().toLocaleDateString('id-ID', { dateStyle: 'full' });
+            
+            // Global Search Listener
+            document.getElementById('globalSearch').addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase();
+                if(query) {
+                    switchTab('barang');
+                    document.getElementById('searchBarangInput').value = query;
+                    renderBarangTable();
+                }
+            });
+
+            switchTab('dashboard');
+        });
+
+        function getTodayDateStr() {
+            return new Date().toISOString().split('T')[0];
+        }
+
+        function initDateInputs() {
+            document.getElementById('mutasiTanggal').value = getTodayDateStr();
+            const date = new Date();
+            const firstDay = new Date(date.getFullYear(), date.getMonth(), 1).toISOString().split('T')[0];
+            document.getElementById('filterLaporanAwal').value = firstDay;
+            document.getElementById('filterLaporanAkhir').value = getTodayDateStr();
+        }
+
+        function initSidebar() {
+            const btn = document.getElementById('mobileMenuBtn');
+            const sidebar = document.getElementById('sidebar');
+            btn.addEventListener('click', () => {
+                sidebar.classList.toggle('app-sidebar-hidden');
+            });
+        }
+
+        // LOCAL STORAGE MANAGEMENT
+        function loadStorage() {
+            const c = localStorage.getItem('pro05_kategori');
+            const b = localStorage.getItem('pro05_barang');
+            const m = localStorage.getItem('pro05_mutasi');
+
+            categories = c ? JSON.parse(c) : [...SEED_KATEGORI];
+            items = b ? JSON.parse(b) : [...SEED_BARANG];
+            mutations = m ? JSON.parse(m) : [...SEED_MUTASI];
+
+            saveStorage();
+        }
+
+        function saveStorage() {
+            localStorage.setItem('pro05_kategori', JSON.stringify(categories));
+            localStorage.setItem('pro05_barang', JSON.stringify(items));
+            localStorage.setItem('pro05_mutasi', JSON.stringify(mutations));
+        }
+
+        function resetDataSeed() {
+            if (confirm('Kembalikan seluruh data ke awal data uji sampel?')) {
+                categories = [...SEED_KATEGORI];
+                items = [...SEED_BARANG];
+                mutations = [...SEED_MUTASI];
+                shoppingChecked = {};
+                saveStorage();
+                renderAllViews();
+                showAlert('Data berhasil di-reset ke data sampel awal.', 'info');
+            }
+        }
+
+        // NAVIGATION CONTROL
+        function switchTab(tabId) {
+            document.querySelectorAll('.page-content').forEach(p => p.classList.add('d-none'));
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+                
+            });
+
+            const page = document.getElementById(`page-${tabId}`);
+            if (page) page.classList.remove('d-none');
+
+            const activeNav = document.getElementById(`nav-${tabId}`);
+            if (activeNav) {
+                activeNav.classList.add('active');
+                
+            }
+
+            document.getElementById('sidebar').classList.add('app-sidebar-hidden');
+            renderAllViews();
+        }
+
+        function renderAllViews() {
+            updateCategoryDropdowns();
+            updateBadgeBelanja();
+            renderDashboard();
+            renderKategoriTable();
+            renderBarangTable();
+            renderMutasiTable();
+            renderBelanjaTable();
+            renderLaporan();
+        }
+
+        function updateCategoryDropdowns() {
+            const selects = ['filterKategoriBarang', 'filterLaporanKategori'];
+            selects.forEach(id => {
+                const el = document.getElementById(id);
+                const val = el.value;
+                el.innerHTML = '<option value="">Semua Kategori</option>';
+                categories.forEach(c => {
+                    const opt = document.createElement('option');
+                    opt.value = c.id_kategori;
+                    opt.textContent = c.nama_kategori;
+                    el.appendChild(opt);
+                });
+                el.value = val;
+            });
+        }
+
+        function updateBadgeBelanja() {
+            const lowCount = items.filter(i => i.stok <= i.stok_minimum).length;
+            const badge = document.getElementById('badgeBelanja');
+            if (lowCount > 0) {
+                badge.textContent = lowCount;
+                badge.classList.remove('d-none');
+            } else {
+                badge.classList.add('d-none');
+            }
+        }
+
+        // ---------------- MODUL 1: DASHBOARD ----------------
+        function renderDashboard() {
+            document.getElementById('kpiTotalBarang').innerText = items.length;
+            const lowStockCount = items.filter(i => i.stok <= i.stok_minimum).length;
+            document.getElementById('kpiStokRendah').innerText = lowStockCount;
+
+            const today = getTodayDateStr();
+            const todayMutations = mutations.filter(m => m.tanggal === today).length;
+            document.getElementById('kpiMutasiHariIni').innerText = todayMutations;
+
+            // Widget Low Stock
+            const dashTable = document.getElementById('dashLowStockTable');
+            dashTable.innerHTML = '';
+            const lowItems = items.filter(i => i.stok <= i.stok_minimum);
+
+            if (lowItems.length === 0) {
+                dashTable.innerHTML = `<tr><td colspan="3" class="text-center py-3 app-text-muted app-text-xs">Semua stok barang tercukupi.</td></tr>`;
+            } else {
+                lowItems.slice(0, 5).forEach(i => {
+                    const tr = document.createElement('tr');
+                    tr.className = "app-hover-light";
+                    tr.innerHTML = `
+                        <td class="px-3 py-2 fw-semibold text-dark">${i.nama_barang}</td>
+                        <td class="px-3 py-2 text-secondary app-text-xs">${i.lokasi}</td>
+                        <td class="px-3 py-2 text-center">
+                            <span class="px-2 app-py-0-5 app-text-xs fw-bold bg-danger-subtle app-text-danger-dark rounded-pill">${i.stok} / ${i.stok_minimum} ${i.satuan}</span>
+                        </td>
+                    `;
+                    dashTable.appendChild(tr);
+                });
+            }
+
+            // Widget Mutasi Terbaru
+            const dashMutasi = document.getElementById('dashMutasiList');
+            dashMutasi.innerHTML = '';
+            if (mutations.length === 0) {
+                dashMutasi.innerHTML = `<div class="text-center py-3 app-text-muted app-text-xs">Belum ada aktivitas mutasi.</div>`;
+            } else {
+                mutations.slice(-4).reverse().forEach(m => {
+                    const b = items.find(item => item.id_barang === m.id_barang) || { nama_barang: 'Barang Terhapus', satuan: '' };
+                    const isMasuk = m.jenis === 'Masuk';
+                    const el = document.createElement('div');
+                    el.className = "d-flex align-items-center justify-content-between p-2.5 bg-light rounded-3 app-text-xs";
+                    el.innerHTML = `
+                        <div class="d-flex align-items-center app-gap-2-5">
+                            <div class="app-width-1-75rem app-height-1-75rem rounded-pill d-flex align-items-center justify-content-center ${isMasuk ? 'bg-success-subtle text-success' : 'bg-danger-subtle text-danger'}">
+                                <i class="fa-solid ${isMasuk ? 'fa-arrow-down' : 'fa-arrow-up'}"></i>
+                            </div>
+                            <div>
+                                <div class="fw-semibold text-body">${b.nama_barang}</div>
+                                <div class="app-text-muted">${m.tanggal} &bull; ${m.keterangan}</div>
+                            </div>
+                        </div>
+                        <span class="fw-bold ${isMasuk ? 'text-success' : 'text-danger'}">
+                            ${isMasuk ? '+' : '-'}${m.jumlah} ${b.satuan}
+                        </span>
+                    `;
+                    dashMutasi.appendChild(el);
+                });
+            }
+        }
+
+        // ---------------- MODUL 2: KATEGORI BARANG (FR-01) ----------------
+        function renderKategoriTable() {
+            const tbody = document.getElementById('kategoriTableBody');
+            tbody.innerHTML = '';
+
+            if (categories.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="4" class="text-center py-4 app-text-muted">Belum ada data kategori.</td></tr>`;
+                return;
+            }
+
+            categories.forEach(c => {
+                const countBarang = items.filter(i => i.id_kategori === c.id_kategori).length;
+                const tr = document.createElement('tr');
+                tr.className = "app-hover-light app-transition";
+                tr.innerHTML = `
+                    <td class="px-3 py-2 text-center app-text-xs font-monospace app-text-muted">#${c.id_kategori}</td>
+                    <td class="px-3 py-2 fw-semibold text-dark">${c.nama_kategori}</td>
+                    <td class="px-3 py-2 text-center">
+                        <span class="app-px-2-5 app-py-0-5 app-text-xs fw-semibold bg-primary-subtle app-text-primary-dark rounded-pill">${countBarang} Barang</span>
+                    </td>
+                    <td class="px-3 py-2 text-center app-space-x-2">
+                        <button onclick="editKategori(${c.id_kategori})" class="app-p-1-5 text-primary app-hover-text-primary-dark rounded app-hover-primary"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button onclick="deleteKategori(${c.id_kategori})" class="app-p-1-5 text-danger app-hover-text-danger-dark rounded app-hover-danger"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function openModalKategori(editItem = null) {
+            document.getElementById('modalKategoriTitle').innerText = editItem ? 'Edit Kategori' : 'Tambah Kategori Baru';
+            document.getElementById('kategoriId').value = editItem ? editItem.id_kategori : '';
+            document.getElementById('kategoriNama').value = editItem ? editItem.nama_kategori : '';
+            document.getElementById('modalKategori').classList.remove('d-none');
+        }
+
+        function closeModalKategori() {
+            document.getElementById('modalKategori').classList.add('d-none');
+            document.getElementById('formKategori').reset();
+        }
+
+        function saveKategori(e) {
+            e.preventDefault();
+            const id = document.getElementById('kategoriId').value;
+            const nama = document.getElementById('kategoriNama').value.trim();
+
+            if (id) {
+                const idx = categories.findIndex(c => c.id_kategori == id);
+                if (idx !== -1) categories[idx].nama_kategori = nama;
+                showAlert('Kategori berhasil diperbarui', 'success');
+            } else {
+                const newId = categories.length > 0 ? Math.max(...categories.map(c => c.id_kategori)) + 1 : 1;
+                categories.push({ id_kategori: newId, nama_kategori: nama });
+                showAlert('Kategori baru ditambahkan', 'success');
+            }
+
+            saveStorage();
+            closeModalKategori();
+            renderAllViews();
+        }
+
+        function editKategori(id) {
+            const cat = categories.find(c => c.id_kategori === id);
+            if (cat) openModalKategori(cat);
+        }
+
+        function deleteKategori(id) {
+            // Validasi aturan: Jika data master masih dipakai, tolak penghapusan
+            const usedInItems = items.some(i => i.id_kategori === id);
+            if (usedInItems) {
+                showAlert('Gagal menghapus! Kategori ini masih digunakan oleh data barang.', 'danger');
+                return;
+            }
+
+            if (confirm('Apakah Anda yakin ingin menghapus kategori ini?')) {
+                categories = categories.filter(c => c.id_kategori !== id);
+                saveStorage();
+                renderAllViews();
+                showAlert('Kategori berhasil dihapus.', 'info');
+            }
+        }
+
+        // ---------------- MODUL 3: DATA BARANG (FR-02, FR-05, FR-06) ----------------
+        function renderBarangTable() {
+            const search = (document.getElementById('searchBarangInput').value || '').toLowerCase();
+            const katFilter = document.getElementById('filterKategoriBarang').value;
+            const stokFilter = document.getElementById('filterStokStatus').value;
+
+            const tbody = document.getElementById('barangTableBody');
+            tbody.innerHTML = '';
+
+            let filtered = items.filter(i => {
+                const cat = categories.find(c => c.id_kategori === i.id_kategori) || { nama_kategori: '' };
+                const matchSearch = i.nama_barang.toLowerCase().includes(search) || 
+                                    cat.nama_kategori.toLowerCase().includes(search) || 
+                                    i.lokasi.toLowerCase().includes(search);
+                const matchKat = katFilter ? i.id_kategori == katFilter : true;
+                let matchStok = true;
+                if (stokFilter === 'rendah') matchStok = i.stok <= i.stok_minimum;
+                if (stokFilter === 'aman') matchStok = i.stok > i.stok_minimum;
+
+                return matchSearch && matchKat && matchStok;
+            });
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="8" class="text-center py-4 app-text-muted">Data tidak ditemukan.</td></tr>`;
+                return;
+            }
+
+            filtered.forEach(i => {
+                const cat = categories.find(c => c.id_kategori === i.id_kategori) || { nama_kategori: '-' };
+                const isLow = i.stok <= i.stok_minimum;
+                const statusBadge = isLow
+                    ? `<span class="d-inline-flex align-items-center gap-1 app-px-2-5 py-1 app-text-xs fw-semibold bg-danger-subtle app-text-danger-dark rounded-pill"><i class="fa-solid fa-circle-exclamation"></i> Perlu Dibeli</span>`
+                    : `<span class="d-inline-flex align-items-center gap-1 app-px-2-5 py-1 app-text-xs fw-semibold bg-success-subtle app-text-success-dark rounded-pill"><i class="fa-solid fa-circle-check"></i> Stok Aman</span>`;
+
+                const tr = document.createElement('tr');
+                tr.className = "app-hover-light app-transition";
+                tr.innerHTML = `
+                    <td class="px-3 app-py-3-5 fw-semibold text-dark">${i.nama_barang}</td>
+                    <td class="px-3 app-py-3-5 text-secondary">${cat.nama_kategori}</td>
+                    <td class="px-3 app-py-3-5 text-center fw-bold ${isLow ? 'text-danger' : 'text-dark'}">${i.stok}</td>
+                    <td class="px-3 app-py-3-5 text-center text-secondary">${i.stok_minimum}</td>
+                    <td class="px-3 app-py-3-5 text-secondary">${i.satuan}</td>
+                    <td class="px-3 app-py-3-5 text-secondary">${i.lokasi}</td>
+                    <td class="px-3 app-py-3-5 text-center">${statusBadge}</td>
+                    <td class="px-3 app-py-3-5 text-center app-space-x-2">
+                        <button onclick="editBarang(${i.id_barang})" class="app-p-1-5 text-primary app-hover-text-primary-dark rounded app-hover-primary"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button onclick="deleteBarang(${i.id_barang})" class="app-p-1-5 text-danger app-hover-text-danger-dark rounded app-hover-danger"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function openModalBarang(editItem = null) {
+            if (categories.length === 0) {
+                showAlert('Tambahkan minimal 1 Kategori sebelum menambah barang!', 'warning');
+                return;
+            }
+
+            // Populate category dropdown
+            const catSelect = document.getElementById('barangKategoriId');
+            catSelect.innerHTML = '';
+            categories.forEach(c => {
+                const opt = document.createElement('option');
+                opt.value = c.id_kategori;
+                opt.textContent = c.nama_kategori;
+                catSelect.appendChild(opt);
+            });
+
+            document.getElementById('modalBarangTitle').innerText = editItem ? 'Edit Data Barang' : 'Tambah Barang Baru';
+            document.getElementById('barangId').value = editItem ? editItem.id_barang : '';
+            document.getElementById('barangNama').value = editItem ? editItem.nama_barang : '';
+            document.getElementById('barangKategoriId').value = editItem ? editItem.id_kategori : categories[0].id_kategori;
+            document.getElementById('barangSatuan').value = editItem ? editItem.satuan : '';
+            document.getElementById('barangStok').value = editItem ? editItem.stok : '';
+            document.getElementById('barangMin').value = editItem ? editItem.stok_minimum : '';
+            document.getElementById('barangLokasi').value = editItem ? editItem.lokasi : '';
+
+            document.getElementById('modalBarang').classList.remove('d-none');
+        }
+
+        function closeModalBarang() {
+            document.getElementById('modalBarang').classList.add('d-none');
+            document.getElementById('formBarang').reset();
+        }
+
+        function saveBarang(e) {
+            e.preventDefault();
+            const id = document.getElementById('barangId').value;
+            const nama_barang = document.getElementById('barangNama').value.trim();
+            const id_kategori = parseInt(document.getElementById('barangKategoriId').value);
+            const satuan = document.getElementById('barangSatuan').value.trim();
+            const stok = parseInt(document.getElementById('barangStok').value) || 0;
+            const stok_minimum = parseInt(document.getElementById('barangMin').value) || 0;
+            const lokasi = document.getElementById('barangLokasi').value.trim();
+
+            if (id) {
+                const idx = items.findIndex(i => i.id_barang == id);
+                if (idx !== -1) {
+                    items[idx] = { ...items[idx], nama_barang, id_kategori, satuan, stok, stok_minimum, lokasi };
+                }
+                showAlert('Data barang berhasil diubah.', 'success');
+            } else {
+                const newId = items.length > 0 ? Math.max(...items.map(i => i.id_barang)) + 1 : 1;
+                items.push({ id_barang: newId, id_kategori, nama_barang, satuan, stok, stok_minimum, lokasi });
+                showAlert('Barang baru berhasil ditambahkan.', 'success');
+            }
+
+            saveStorage();
+            closeModalBarang();
+            renderAllViews();
+        }
+
+        function editBarang(id) {
+            const item = items.find(i => i.id_barang === id);
+            if (item) openModalBarang(item);
+        }
+
+        function deleteBarang(id) {
+            if (confirm('Apakah Anda yakin ingin menghapus data barang ini? Segenap mutasi terkait juga akan dibersihkan.')) {
+                items = items.filter(i => i.id_barang !== id);
+                mutations = mutations.filter(m => m.id_barang !== id);
+                saveStorage();
+                renderAllViews();
+                showAlert('Barang dihapus.', 'info');
+            }
+        }
+
+        // ---------------- MODUL 4: MUTASI STOK (FR-03) ----------------
+        function renderMutasiTable() {
+            const search = (document.getElementById('searchMutasiInput').value || '').toLowerCase();
+            const jenisFilter = document.getElementById('filterJenisMutasi').value;
+
+            const tbody = document.getElementById('mutasiTableBody');
+            tbody.innerHTML = '';
+
+            let filtered = mutations.filter(m => {
+                const b = items.find(item => item.id_barang === m.id_barang) || { nama_barang: '' };
+                const matchSearch = b.nama_barang.toLowerCase().includes(search) || m.keterangan.toLowerCase().includes(search);
+                const matchJenis = jenisFilter ? m.jenis === jenisFilter : true;
+                return matchSearch && matchJenis;
+            });
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" class="text-center py-4 app-text-muted">Data mutasi tidak ditemukan.</td></tr>`;
+                return;
+            }
+
+            filtered.slice().reverse().forEach(m => {
+                const b = items.find(item => item.id_barang === m.id_barang) || { nama_barang: 'Barang Terhapus', satuan: '' };
+                const isMasuk = m.jenis === 'Masuk';
+                
+                const tr = document.createElement('tr');
+                tr.className = "app-hover-light app-transition";
+                tr.innerHTML = `
+                    <td class="px-3 app-py-3-5 text-secondary app-text-xs">${m.tanggal}</td>
+                    <td class="px-3 app-py-3-5 fw-semibold text-dark">${b.nama_barang}</td>
+                    <td class="px-3 app-py-3-5 text-center">
+                        <span class="app-px-2-5 py-1 app-text-xs fw-bold rounded-pill ${isMasuk ? 'bg-success-subtle app-text-success-dark' : 'bg-danger-subtle app-text-danger-dark'}">
+                            ${m.jenis}
+                        </span>
+                    </td>
+                    <td class="px-3 app-py-3-5 text-center fw-bold ${isMasuk ? 'text-success' : 'text-danger'}">
+                        ${isMasuk ? '+' : '-'}${m.jumlah} ${b.satuan}
+                    </td>
+                    <td class="px-3 app-py-3-5 text-secondary app-text-xs">${m.keterangan}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function openModalMutasi(presetJenis = 'Masuk') {
+            if (items.length === 0) {
+                showAlert('Belum ada data barang! Tambahkan data barang terlebih dahulu.', 'warning');
+                return;
+            }
+
+            const bSelect = document.getElementById('mutasiBarangId');
+            bSelect.innerHTML = '';
+            items.forEach(i => {
+                const opt = document.createElement('option');
+                opt.value = i.id_barang;
+                opt.textContent = `${i.nama_barang} (Sisa Stok: ${i.stok} ${i.satuan})`;
+                bSelect.appendChild(opt);
+            });
+
+            document.getElementById('mutasiJenis').value = presetJenis;
+            document.getElementById('modalMutasi').classList.remove('d-none');
+        }
+
+        function closeModalMutasi() {
+            document.getElementById('modalMutasi').classList.add('d-none');
+            document.getElementById('formMutasi').reset();
+            document.getElementById('mutasiTanggal').value = getTodayDateStr();
+        }
+
+        function saveMutasi(e) {
+            e.preventDefault();
+            const id_barang = parseInt(document.getElementById('mutasiBarangId').value);
+            const jenis = document.getElementById('mutasiJenis').value;
+            const jumlah = parseInt(document.getElementById('mutasiJumlah').value) || 0;
+            const tanggal = document.getElementById('mutasiTanggal').value;
+            const keterangan = document.getElementById('mutasiKeterangan').value.trim();
+
+            const item = items.find(i => i.id_barang === id_barang);
+            if (!item) return;
+
+            // Aturan Validasi: Pengurangan melebihi sisa stok
+            if (jenis === 'Keluar' && jumlah > item.stok) {
+                showAlert(`Stok tidak mencukupi! Stok saat ini hanya ${item.stok} ${item.satuan}.`, 'danger');
+                return;
+            }
+
+            // Update Stok Terkait
+            if (jenis === 'Masuk') {
+                item.stok += jumlah;
+            } else {
+                item.stok -= jumlah;
+            }
+
+            // Simpan Data Mutasi
+            const newId = mutations.length > 0 ? Math.max(...mutations.map(m => m.id_mutasi)) + 1 : 1;
+            mutations.push({ id_mutasi: newId, id_barang, tanggal, jenis, jumlah, keterangan });
+
+            saveStorage();
+            closeModalMutasi();
+            renderAllViews();
+            showAlert(`Mutasi ${jenis.toLowerCase()} berhasil disimpan. Stok diperbarui!`, 'success');
+        }
+
+        // ---------------- MODUL 5: DAFTAR BELANJA (FR-04, FR-06) ----------------
+        function renderBelanjaTable() {
+            const tbody = document.getElementById('belanjaTableBody');
+            tbody.innerHTML = '';
+
+            // Barang dengan stok <= minimum (FR-04)
+            const lowItems = items.filter(i => i.stok <= i.stok_minimum);
+            document.getElementById('totalBelanjaItem').innerText = `${lowItems.length} Item Perlu Dibeli`;
+
+            if (lowItems.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="8" class="text-center py-5 app-text-muted">Semua persediaan barang rumah tangga tercukupi.</td></tr>`;
+                return;
+            }
+
+            lowItems.forEach(i => {
+                const cat = categories.find(c => c.id_kategori === i.id_kategori) || { nama_kategori: '-' };
+                // Formula Rekomendasi Beli = (stok_minimum * 2) - stok
+                const rekomBeli = Math.max((i.stok_minimum * 2) - i.stok, 1);
+                const isChecked = shoppingChecked[i.id_barang] || false;
+
+                const tr = document.createElement('tr');
+                tr.className = `app-hover-light app-transition ${isChecked ? 'app-bg-gray-soft' : ''}`;
+                tr.innerHTML = `
+                    <td class="px-3 app-py-3-5 text-center no-print">
+                        <input type="checkbox" onchange="toggleShoppingCheck(${i.id_barang})" ${isChecked ? 'checked' : ''} class="app-width-1rem app-height-1rem text-primary rounded app-border-medium app-focus-primary">
+                    </td>
+                    <td class="px-3 app-py-3-5 fw-semibold ${isChecked ? 'line-through app-text-muted' : 'text-dark'}">${i.nama_barang}</td>
+                    <td class="px-3 app-py-3-5 text-secondary">${cat.nama_kategori}</td>
+                    <td class="px-3 app-py-3-5 text-center fw-bold text-danger">${i.stok} ${i.satuan}</td>
+                    <td class="px-3 app-py-3-5 text-center text-secondary">${i.stok_minimum} ${i.satuan}</td>
+                    <td class="px-3 app-py-3-5 text-center fw-bold text-primary">${rekomBeli} ${i.satuan}</td>
+                    <td class="px-3 app-py-3-5 text-secondary">${i.lokasi}</td>
+                    <td class="px-3 app-py-3-5 text-center no-print">
+                        <span class="app-px-2-5 py-1 app-text-xs fw-bold rounded-pill ${isChecked ? 'bg-success-subtle app-text-success-dark' : 'bg-warning-subtle app-text-warning-dark'}">
+                            ${isChecked ? 'Sudah Dibeli' : 'Perlu Dibeli'}
+                        </span>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function toggleShoppingCheck(id) {
+            shoppingChecked[id] = !shoppingChecked[id];
+            renderBelanjaTable();
+        }
+
+        // ---------------- MODUL 6: REKAP LAPORAN (FR-07) ----------------
+        function renderLaporan() {
+            const katFilter = document.getElementById('filterLaporanKategori').value;
+            const tglAwal = document.getElementById('filterLaporanAwal').value;
+            const tglAkhir = document.getElementById('filterLaporanAkhir').value;
+
+            const tbody = document.getElementById('laporanTableBody');
+            tbody.innerHTML = '';
+
+            let filteredItems = items.filter(i => katFilter ? i.id_kategori == katFilter : true);
+
+            let grandTotalMasuk = 0;
+            let grandTotalKeluar = 0;
+
+            if (filteredItems.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="text-center py-4 app-text-muted">Data laporan tidak ditemukan.</td></tr>`;
+            } else {
+                filteredItems.forEach(i => {
+                    const cat = categories.find(c => c.id_kategori === i.id_kategori) || { nama_kategori: '-' };
+                    
+                    // Rekap mutasi per periode
+                    const itemMutasi = mutations.filter(m => {
+                        const matchBarang = m.id_barang === i.id_barang;
+                        let matchDate = true;
+                        if (tglAwal && m.tanggal < tglAwal) matchDate = false;
+                        if (tglAkhir && m.tanggal > tglAkhir) matchDate = false;
+                        return matchBarang && matchDate;
+                    });
+
+                    const sumMasuk = itemMutasi.filter(m => m.jenis === 'Masuk').reduce((acc, curr) => acc + curr.jumlah, 0);
+                    const sumKeluar = itemMutasi.filter(m => m.jenis === 'Keluar').reduce((acc, curr) => acc + curr.jumlah, 0);
+
+                    grandTotalMasuk += sumMasuk;
+                    grandTotalKeluar += sumKeluar;
+
+                    const tr = document.createElement('tr');
+                    tr.className = "app-hover-light app-transition";
+                    tr.innerHTML = `
+                        <td class="px-3 app-py-3-5 fw-semibold text-dark">${i.nama_barang}</td>
+                        <td class="px-3 app-py-3-5 text-secondary">${cat.nama_kategori}</td>
+                        <td class="px-3 app-py-3-5 text-center fw-semibold text-success">+${sumMasuk} ${i.satuan}</td>
+                        <td class="px-3 app-py-3-5 text-center fw-semibold text-danger">-${sumKeluar} ${i.satuan}</td>
+                        <td class="px-3 app-py-3-5 text-center fw-bold text-dark">${i.stok} ${i.satuan}</td>
+                        <td class="px-3 app-py-3-5 text-secondary">${i.lokasi}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            }
+
+            // Rekap Otomatis dari Basis Data (Bukan angka manual)
+            document.getElementById('lapTotalItem').innerText = filteredItems.length;
+            document.getElementById('lapTotalMasuk').innerText = grandTotalMasuk;
+            document.getElementById('lapTotalKeluar').innerText = grandTotalKeluar;
+        }
+
+        // UTILITY SYSTEM NOTIFICATION
+        function showAlert(message, type = 'info') {
+            const container = document.getElementById('alertContainer');
+            const alert = document.createElement('div');
+
+            const bgColors = {
+                success: 'bg-success text-white',
+                danger: 'bg-danger text-white',
+                warning: 'bg-warning text-white',
+                info: 'bg-primary text-white'
+            };
+
+            alert.className = `${bgColors[type] || bgColors.info} app-p-3-5 rounded-4 shadow-lg small d-flex align-items-center justify-content-between transition-all app-transform duration-300 app-opacity-0 app-translate-y-2`;
+            alert.innerHTML = `
+                <div class="d-flex align-items-center gap-2">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <span>${message}</span>
+                </div>
+                <button onclick="this.parentElement.remove()" class="app-text-white-80 app-hover-text-white ms-3">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            `;
+
+            container.appendChild(alert);
+            setTimeout(() => alert.classList.remove('app-opacity-0', 'app-translate-y-2'), 10);
+            setTimeout(() => {
+                alert.classList.add('app-opacity-0');
+                setTimeout(() => alert.remove(), 300);
+            }, 3500);
+        }
+    </script>
+    <script>
+        // ---------------- AUTH: nama pengguna & logout ----------------
+        (function () {
+            try {
+                const s = JSON.parse(sessionStorage.getItem('pro05_session') || localStorage.getItem('pro05_session'));
+                if (s && s.nama) document.getElementById('navUserName').textContent = s.nama;
+            } catch (e) {}
+        })();
+        function logout() {
+            if (!confirm('Yakin ingin keluar?')) return;
+            sessionStorage.removeItem('pro05_session');
+            localStorage.removeItem('pro05_session');
+            location.replace('login.html');
+        }
+    </script>
+</body>
+</html>
